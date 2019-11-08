@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './NavBar.scss'
 
 const NavItem = ({ element }) => {
@@ -9,10 +9,16 @@ const NavItem = ({ element }) => {
 	)
 }
 
-const NavBar = (props) => {
+const NavBar = () => {
+	const [navList] = useState([ 
+			{label: 'Home', href: '/'},
+			{label: 'Top Rated', href: '/top'},
+			{label: 'Popular', href: '/popular'} 
+		])
+
 	return (
 		<nav className={'mainNav'}>
-			<ul>{props.data.map((e, i) => <NavItem key={i} element={e} />)}</ul>
+			<ul>{navList.map((e, i) => <NavItem key={i} element={e} />)}</ul>
 		</nav>
 	)
 }
